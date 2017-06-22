@@ -1,0 +1,19 @@
+{
+  "name": "mars-robots",
+  "version": "1.0.0",
+  "description": "move robots around a grid",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rorymcgit/mars-robots.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rorymcgit/mars-robots/issues"
+  },
+  "homepage": "https://github.com/rorymcgit/mars-robots#readme"
+}
