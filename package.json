@@ -2,7 +2,7 @@
   "name": "mars-robots",
   "version": "1.0.0",
   "description": "move robots around a grid",
-  "main": "index.html",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
