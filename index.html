@@ -5,11 +5,19 @@
 </head>
 
 <body ng-app="marsRobots">
+
+  Grid Size:
+  <input type="text" ng-model="gridSize">
+  <input type="button" ng-click="createGrid()" value="Make grid"/>
+    <div>
+      Your desired grid size is: {{ gridSize }}
+    </div>
+
   <div ng-controller="GridController">
     <table border="1">
       <tr ng-repeat="row in grid.rows">
-          <td ng-repeat="spot in row.spots">
-              {{ cell }}
+          <td ng-repeat="cell in row.cells">
+              {{ square }}
           </td>
       </tr>
     </table>
