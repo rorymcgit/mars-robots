@@ -3,31 +3,39 @@
 //   // $scope.square = "----";
 // }]);
 
-app.controller("formCtrl", function($scope) {
-    $scope.inputValue = null;
-    $scope.createGrid = function(coordinates) {
-      console.log("Coordinates are:", coordinates);
-      var xCoord = parseInt(coordinates.split("")[0]);
-      var yCoord = parseInt(coordinates.split("")[1]);
+app.controller('formCtrl', [function() {
+  this.coords = {
+    x: '',
+    y: ''
+  };
 
-      var grid = {};
-      grid.rows = [];
+  this.createGrid = function() {
+    console.log("Coordinates are:", this.coords);
 
-      for(var i = 0; i < xCoord; i++) {
-        var row = {};
-        row.cells = [];
+    var xCoord = parseInt(this.coords['x']);
+    var yCoord = parseInt(this.coords['y']);
 
-        // console.log(row);
+    console.log(xCoord);
+    console.log(yCoord);
 
-        for(var j = 0; j < yCoord; j++) {
-          var cell = {};
-          row.cells.push(cell);
-        }
+    var grid = {};
+    grid.rows = [];
 
-        grid.rows.push(row);
+    for(var i = 0; i < xCoord; i++) {
+      var row = {};
+      row.cells = [];
+
+      // console.log(row);
+
+      for(var j = 0; j < yCoord; j++) {
+        var cell = {};
+        row.cells.push(cell);
       }
-      console.log(grid);
 
-      return grid;
-    };
-});
+      grid.rows.push(row);
+    }
+    console.log(grid);
+
+    return grid;
+  };
+}]);
