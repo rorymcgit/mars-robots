@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/rorymcgit/mars-robots/issues"
   },
-  "homepage": "https://github.com/rorymcgit/mars-robots#readme"
+  "homepage": "https://github.com/rorymcgit/mars-robots#readme",
+  "dependencies": {
+    "angular": "^1.6.4"
+  }
 }
