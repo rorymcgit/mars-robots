@@ -18,5 +18,14 @@
   "homepage": "https://github.com/rorymcgit/mars-robots#readme",
   "dependencies": {
     "angular": "^1.6.4"
+  },
+  "devDependencies": {
+    "angular": "^1.6.4",
+    "angular-mocks": "^1.6.4",
+    "@uirouter/angularjs": "latest",
+    "jasmine-core": "^2.6.4",
+    "karma": "^1.7.0",
+    "karma-chrome-launcher": "^2.1.1",
+    "karma-jasmine": "^1.1.0"
   }
 }
