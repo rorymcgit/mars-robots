@@ -6,22 +6,13 @@
 
 <body ng-app="marsRobots">
 
-  <div ng-controller="formCtrl as ctrl">
+  <div ng-controller="gridController as ctrl">
     <form name="myForm" ng-submit="ctrl.createGrid()">
        X coord: <input type="text" ng-model="ctrl.coords.x">
        Y coord: <input type="text" ng-model="ctrl.coords.y">
        <input type="submit" value="Submit">
     </form>
-
     Your desired grid size is: {{ ctrl.coords.x }} x {{ ctrl.coords.y }}
-
-    <table border="1">
-      <tr ng-repeat="row in ctrl.createGrid().rows | limitTo:10">
-        <td ng-repeat="cell in row.cells">
-          {{ "cell" }}
-        </td>
-      </tr>
-    </table>
 
   </div>
 

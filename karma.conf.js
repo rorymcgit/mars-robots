@@ -19,6 +19,7 @@ module.exports = function(config) {
       './node_modules/angular-ui-router/release/angular-ui-router.js', // ui-router
       './node_modules/angular-mocks/angular-mocks.js',                 // loads modules for tests
       './js/app.js',
+      './js/controllers/gridController.js',
       './spec/grid_spec.js'
     ],
 
