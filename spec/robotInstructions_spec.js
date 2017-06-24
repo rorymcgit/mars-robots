@@ -24,4 +24,9 @@ describe("Robot instructions", function() {
     expect(gridController.moveRobot()).toEqual("33N");
   });
 
+  it("provides complex move instructions and receives the robot's final position", function() {
+    gridController.robotInstructions = "RFFRFRFFLFRRFFLFL";
+    expect(gridController.moveRobot()).toEqual("22S");
+  });
+
 });

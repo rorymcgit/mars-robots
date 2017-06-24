@@ -49,12 +49,49 @@ app.controller("gridController", function() {
     var ctlr = this;
     console.log(allInstructions);
     allInstructions.forEach(function(instruct) {
-      if(instruct === "F") {
-        if(ctlr.robotCoords.orientation === "N") {
+      if (instruct === "F") {
+        if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.y += 1;
+        }
+        else if (ctlr.robotCoords.orientation === "S") {
+          ctlr.robotCoords.y -= 1;
+        }
+        else if (ctlr.robotCoords.orientation === "E") {
+          ctlr.robotCoords.x += 1;
+        }
+        else if (ctlr.robotCoords.orientation === "W") {
+          ctlr.robotCoords.x -= 1;
+        }
+      }
+      else if (instruct === "R") {
+        if (ctlr.robotCoords.orientation === "N") {
+          ctlr.robotCoords.orientation = "E";
+        }
+        else if (ctlr.robotCoords.orientation === "S") {
+          ctlr.robotCoords.orientation = "W";
+        }
+        else if (ctlr.robotCoords.orientation === "E") {
+          ctlr.robotCoords.orientation = "S";
+        }
+        else if (ctlr.robotCoords.orientation === "W") {
+          ctlr.robotCoords.orientation = "N";
+        }
+      }
+      else if (instruct === "L") {
+        if (ctlr.robotCoords.orientation === "N") {
+          ctlr.robotCoords.orientation = "W";
+        }
+        else if (ctlr.robotCoords.orientation === "S") {
+          ctlr.robotCoords.orientation = "E";
+        }
+        else if (ctlr.robotCoords.orientation === "E") {
+          ctlr.robotCoords.orientation = "N";
+        }
+        else if (ctlr.robotCoords.orientation === "W") {
+          ctlr.robotCoords.orientation = "S";
         }
       }
     });
-    return(this.stringifyRobotPosition())
+    return(this.stringifyRobotPosition());
   };
 });
