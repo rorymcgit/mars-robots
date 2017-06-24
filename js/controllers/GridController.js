@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller("gridController", function() {
   this.coords = {
     x: "",
@@ -18,14 +20,14 @@ app.controller("gridController", function() {
     for(var i = 0; i < cols; i++) {
       grid[i] = [];
       for(var j = 0; j < rows; j++) {
-        grid[i][j] = j;
+        grid[i][j] = String(i) + String(j);
+        console.log(grid[i][j]);
       }
     }
-    console.log(grid);
     this.grid = grid;
-
+    console.log(this.grid);
     console.log(this);
 
-    return grid;
+    return this.grid;
   };
 });

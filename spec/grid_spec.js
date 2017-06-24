@@ -21,12 +21,12 @@ describe("gridController", function() {
     gridController.coords['x'] = '5';
     gridController.coords['y'] = '3';
 
-    var expectedGridArray = [ [0, 1, 2, 3],
-                              [0, 1, 2, 3],
-                              [0, 1, 2, 3],
-                              [0, 1, 2, 3],
-                              [0, 1, 2, 3],
-                              [0, 1, 2, 3]];
+    var expectedGridArray = [ ["00", "01", "02", "03"],
+                              ["10", "11", "12", "13"],
+                              ["20", "21", "22", "23"],
+                              ["30", "31", "32", "33"],
+                              ["40", "41", "42", "43"],
+                              ["50", "51", "52", "53"]];
 
     expect(gridController.createGrid()).toEqual(expectedGridArray);
   });
