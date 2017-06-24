@@ -19,7 +19,7 @@ describe("Robot instructions", function() {
     expect(gridController.robotInstructions).toEqual("");
   });
 
-  it("provides a set of instructions and receives the robot's final position", function() {
+  it("provides a single move instruction and receives the robot's final position", function() {
     gridController.robotInstructions = "F";
     expect(gridController.moveRobot()).toEqual("33N");
   });

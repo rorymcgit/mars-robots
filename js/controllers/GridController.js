@@ -45,6 +45,16 @@ app.controller("gridController", function() {
 
   this.moveRobot = function() {
     console.log(this.robotInstructions);
-    // if()
+    var allInstructions = this.robotInstructions.split("");
+    var ctlr = this;
+    console.log(allInstructions);
+    allInstructions.forEach(function(instruct) {
+      if(instruct === "F") {
+        if(ctlr.robotCoords.orientation === "N") {
+          ctlr.robotCoords.y += 1;
+        }
+      }
+    });
+    return(this.stringifyRobotPosition())
   };
 });
