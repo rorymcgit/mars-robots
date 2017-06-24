@@ -15,11 +15,11 @@
     </form>
     The grid size is: {{ ctrl.gridCoords.x }} x {{ ctrl.gridCoords.y }}</p>
 
-    <form name="robotStartPosition" ng-submit="ctrl.placeRobot()">
+    <form name="robotStartPosition" ng-submit="ctrl.stringifyRobotPosition()">
       Robot Start Position:</br>
       X coord: <input type="number" min="0" max="49" ng-model="ctrl.robotCoords.x"/>
       Y coord: <input type="number" min="0" max="49" ng-model="ctrl.robotCoords.y"/>
-      Orientation: (N/S/W/E): <input type="text" pattern="[N,S,W,E]{1}" ng-model="ctrl.robotCoords.direction"/>
+      Orientation: (N/S/E/W): <input type="text" pattern="[N,S,E,W]{1}" ng-model="ctrl.robotCoords.orientation"/>
       <input type="submit" value="Submit">
     </form>
     The robot is at position: {{ ctrl.robotPosition }}

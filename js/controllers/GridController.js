@@ -9,7 +9,7 @@ app.controller("gridController", function() {
   this.robotCoords = {
     x: null,
     y: null,
-    direction: null
+    orientation: null
   }
 
   this.createGrid = function() {
@@ -35,8 +35,7 @@ app.controller("gridController", function() {
     return this.grid;
   };
 
-  this.placeRobot = function() {
-    this.robotPosition = this.grid[this.robotCoords["x"]][this.robotCoords["y"]] + this.robotCoords["direction"];
-    return this.robotPosition;
+  this.stringifyRobotPosition = function() {
+    return this.grid[this.robotCoords["x"]][this.robotCoords["y"]] + this.robotCoords["orientation"];
   };
 });
