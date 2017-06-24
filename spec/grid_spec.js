@@ -9,11 +9,11 @@ describe("gridController", function() {
     });
   });
 
-  it("x coordinates null as default", function() {
+  it("x coordinate is null as default", function() {
     expect(gridController.gridCoords["x"]).toEqual(null);
   });
 
-  it("y coordinates null as default", function() {
+  it("y coordinate is null as default", function() {
     expect(gridController.gridCoords["y"]).toEqual(null);
   });
 

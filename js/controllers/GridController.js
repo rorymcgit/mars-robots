@@ -8,7 +8,8 @@ app.controller("gridController", function() {
 
   this.roboStartCoords = {
     x: null,
-    y: null
+    y: null,
+    direction: null
   }
 
   this.createGrid = function() {
@@ -35,7 +36,7 @@ app.controller("gridController", function() {
   };
 
   this.placeRobot = function() {
-    this.robotPosition = this.grid[this.roboStartCoords["x"]][this.roboStartCoords["y"]];
+    this.robotPosition = this.grid[this.roboStartCoords["x"]][this.roboStartCoords["y"]] + this.roboStartCoords["direction"];
     return this.robotPosition;
   };
 });
