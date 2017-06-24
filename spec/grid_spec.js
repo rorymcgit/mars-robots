@@ -17,34 +17,21 @@ describe("gridController", function() {
     expect(gridController.gridCoords["y"]).toEqual("");
   });
 
-  it("creates a 2D grid array", function() {
-    gridController.gridCoords["x"] = "5";
-    gridController.gridCoords["y"] = "3";
+  describe("defined grid", function() {
+    beforeEach(function() {
+      gridController.gridCoords["x"] = "5";
+      gridController.gridCoords["y"] = "3";
+    });
 
-    var expectedGridArray = [ ["00", "01", "02", "03"],
-                              ["10", "11", "12", "13"],
-                              ["20", "21", "22", "23"],
-                              ["30", "31", "32", "33"],
-                              ["40", "41", "42", "43"],
-                              ["50", "51", "52", "53"]];
+    it("creates a 2D grid array", function() {
+      var expectedGridArray = [ ["00", "01", "02", "03"],
+                                ["10", "11", "12", "13"],
+                                ["20", "21", "22", "23"],
+                                ["30", "31", "32", "33"],
+                                ["40", "41", "42", "43"],
+                                ["50", "51", "52", "53"]];
 
-    expect(gridController.createGrid()).toEqual(expectedGridArray);
-  });
-
-  it("robot start x coordinates empty as default", function() {
-    expect(gridController.roboStartCoords["x"]).toEqual("");
-  });
-
-  it("robot start y coordinates empty as default", function() {
-    expect(gridController.roboStartCoords["y"]).toEqual("");
-  });
-
-  it("logs a robot's start position", function() {
-    gridController.gridCoords["x"] = "5";
-    gridController.gridCoords["y"] = "3";
-    gridController.createGrid();
-    gridController.roboStartCoords["x"] = 3;
-    gridController.roboStartCoords["y"] = 2;
-    expect(gridController.placeRobot()).toEqual("32")
+      expect(gridController.createGrid()).toEqual(expectedGridArray);
+    });
   });
 });

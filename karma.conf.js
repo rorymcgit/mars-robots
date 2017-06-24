@@ -20,7 +20,8 @@ module.exports = function(config) {
       './node_modules/angular-mocks/angular-mocks.js',                 // loads modules for tests
       './js/app.js',
       './js/controllers/gridController.js',
-      './spec/grid_spec.js'
+      './spec/grid_spec.js',
+      'spec/robotPosition_spec.js'
     ],
 
 
