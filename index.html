@@ -9,20 +9,26 @@
   <div ng-controller="gridController as ctrl">
 
     <p><form name="gridSize" ng-submit="ctrl.createGrid()">
-       X coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.x"/>
-       Y coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.y"/>
+       X coord: <input type="number" ng-model="ctrl.gridCoords.x" min="0" max="49"/>
+       Y coord: <input type="number" ng-model="ctrl.gridCoords.y" min="0" max="49"/>
        <input type="submit" value="Submit">
     </form>
     The grid size is: {{ ctrl.gridCoords.x }} x {{ ctrl.gridCoords.y }}</p>
 
-    <form name="robotStartPosition" ng-submit="ctrl.stringifyRobotPosition()">
+    <p><form name="robotStartPosition" ng-submit="ctrl.stringifyRobotPosition()">
       Robot Start Position:</br>
-      X coord: <input type="number" min="0" max="49" ng-model="ctrl.robotCoords.x"/>
-      Y coord: <input type="number" min="0" max="49" ng-model="ctrl.robotCoords.y"/>
-      Orientation: (N/S/E/W): <input type="text" pattern="[N,S,E,W]{1}" ng-model="ctrl.robotCoords.orientation"/>
+      X coord: <input type="number" ng-model="ctrl.robotCoords.x" min="0" max="50"/>
+      Y coord: <input type="number" ng-model="ctrl.robotCoords.y" min="0" max="50"/>
+      Orientation: (N/S/E/W): <input type="text" ng-model="ctrl.robotCoords.orientation" pattern="[N,S,E,W]{1}"/>
       <input type="submit" value="Submit">
     </form>
-    The robot is at position: {{ ctrl.robotPosition }}
+    The robot is at position: {{ ctrl.robotPosition }}</p>
+
+    <form name="robotInstructions">
+      Robot Movement Instructions:
+      <input type="text" ng-model="ctrl.robotInstructions" pattern="[L,R,F]{0,99}"/>
+      <input type="submit" value="Submit">
+    </form>
 
   </div>
 

@@ -36,6 +36,8 @@ app.controller("gridController", function() {
   };
 
   this.stringifyRobotPosition = function() {
-    return this.grid[this.robotCoords["x"]][this.robotCoords["y"]] + this.robotCoords["orientation"];
+    console.log(this);
+    this.robotPosition = this.grid[this.robotCoords["x"]][this.robotCoords["y"]] + this.robotCoords["orientation"];
+    return this.robotPosition;
   };
 });
