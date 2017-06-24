@@ -9,12 +9,12 @@ describe("gridController", function() {
     });
   });
 
-  it("x coordinates empty as default", function() {
-    expect(gridController.gridCoords["x"]).toEqual("");
+  it("x coordinates null as default", function() {
+    expect(gridController.gridCoords["x"]).toEqual(null);
   });
 
-  it("y coordinates empty as default", function() {
-    expect(gridController.gridCoords["y"]).toEqual("");
+  it("y coordinates null as default", function() {
+    expect(gridController.gridCoords["y"]).toEqual(null);
   });
 
   describe("defined grid", function() {

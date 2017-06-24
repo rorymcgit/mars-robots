@@ -9,12 +9,12 @@ describe("Robot position", function() {
     });
   });
 
-  it("robot start x coordinates empty as default", function() {
-    expect(gridController.roboStartCoords["x"]).toEqual("");
+  it("robot start x coordinates null as default", function() {
+    expect(gridController.roboStartCoords["x"]).toEqual(null);
   });
 
-  it("robot start y coordinates empty as default", function() {
-    expect(gridController.roboStartCoords["y"]).toEqual("");
+  it("robot start y coordinates null as default", function() {
+    expect(gridController.roboStartCoords["y"]).toEqual(null);
   });
 
   describe("defined grid with a robot position", function() {

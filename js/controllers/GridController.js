@@ -2,13 +2,13 @@
 
 app.controller("gridController", function() {
   this.gridCoords = {
-    x: "",
-    y: ""
+    x: null,
+    y: null
   };
 
   this.roboStartCoords = {
-    x: "",
-    y: ""
+    x: null,
+    y: null
   }
 
   this.createGrid = function() {

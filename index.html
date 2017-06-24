@@ -7,8 +7,8 @@
 <body ng-app="marsRobots">
 
   <div ng-controller="gridController as ctrl">
-    <p>
-    <form name="gridSize" ng-submit="ctrl.createGrid()">
+
+    <p><form name="gridSize" ng-submit="ctrl.createGrid()">
        X coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.x"/>
        Y coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.y"/>
        <input type="submit" value="Submit">
