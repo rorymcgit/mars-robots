@@ -5,7 +5,7 @@ app.controller("gridController", function() {
   };
 
   this.createGrid = function() {
-    console.log("Coordinates are:", this.coords);
+    console.log("Grid Size Coordinates:", this.coords);
 
     var cols = parseInt(this.coords["x"]) + 1; // add 1 for zero
     var rows = parseInt(this.coords["y"]) + 1; // add 1 for zero
@@ -22,6 +22,9 @@ app.controller("gridController", function() {
       }
     }
     console.log(grid);
+    this.grid = grid;
+
+    console.log(this);
 
     return grid;
   };

@@ -7,12 +7,20 @@
 <body ng-app="marsRobots">
 
   <div ng-controller="gridController as ctrl">
-    <form name="myForm" ng-submit="ctrl.createGrid()">
-       X coord: <input type="text" ng-model="ctrl.coords.x">
-       Y coord: <input type="text" ng-model="ctrl.coords.y">
+    <p>
+    <form name="gridSize" ng-submit="ctrl.createGrid()">
+       X coord: <input type="number" min="0" max="49" ng-model="ctrl.coords.x"/>
+       Y coord: <input type="number" min="0" max="49" ng-model="ctrl.coords.y"/>
        <input type="submit" value="Submit">
     </form>
-    Your desired grid size is: {{ ctrl.coords.x }} x {{ ctrl.coords.y }}
+    The grid size is: {{ ctrl.coords.x }} x {{ ctrl.coords.y }}</p>
+
+    <form name="robotStartPosition">
+      Robot Start Position:</br>
+      X coord: <input type="number" min="0" max="49" ng-model="ctrl.robotStart.x"/>
+      Y coord: <input type="number" min="0" max="49" ng-model="ctrl.robotStart.y"/>
+      <input type="submit" value="Submit">
+    </form>
 
   </div>
 
