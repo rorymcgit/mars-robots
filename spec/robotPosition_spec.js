@@ -10,11 +10,11 @@ describe("Robot position", function() {
   });
 
   it("robot start x coordinate is null as default", function() {
-    expect(gridController.robotCoords["x"]).toEqual(null);
+    expect(gridController.robotCoords.x).toEqual(null);
   });
 
   it("robot start y coordinate is null as default", function() {
-    expect(gridController.robotCoords["y"]).toEqual(null);
+    expect(gridController.robotCoords.y).toEqual(null);
   });
 
   it("orientation is null as default", function() {
@@ -23,12 +23,12 @@ describe("Robot position", function() {
 
   describe("defined grid with a robot position + orientation", function() {
     beforeEach(function() {
-      gridController.gridCoords["x"] = "5";
-      gridController.gridCoords["y"] = "3";
+      gridController.gridCoords.x = "5";
+      gridController.gridCoords.y = "3";
       gridController.createGrid();
-      gridController.robotCoords["x"] = 3;
-      gridController.robotCoords["y"] = 2;
-      gridController.robotCoords["orientation"] = "N";
+      gridController.robotCoords.x = 3;
+      gridController.robotCoords.y = 2;
+      gridController.robotCoords.orientation = "N";
     });
 
     it("logs a robot's start position", function() {

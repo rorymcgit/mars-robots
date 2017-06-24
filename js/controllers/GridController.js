@@ -12,11 +12,13 @@ app.controller("gridController", function() {
     orientation: null
   }
 
+  this.robotInstructions = "";
+
   this.createGrid = function() {
     console.log("Grid Size Coordinates:", this.gridCoords);
 
-    var cols = parseInt(this.gridCoords["x"]) + 1; // add 1 for zero
-    var rows = parseInt(this.gridCoords["y"]) + 1; // add 1 for zero
+    var cols = parseInt(this.gridCoords.x) + 1; // add 1 for zero
+    var rows = parseInt(this.gridCoords.y) + 1; // add 1 for zero
 
     console.log("cols (x) =", cols);
     console.log("rows (y) =", rows);
@@ -37,7 +39,12 @@ app.controller("gridController", function() {
 
   this.stringifyRobotPosition = function() {
     console.log(this);
-    this.robotPosition = this.grid[this.robotCoords["x"]][this.robotCoords["y"]] + this.robotCoords["orientation"];
+    this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
     return this.robotPosition;
+  };
+
+  this.moveRobot = function() {
+    console.log(this.robotInstructions);
+    // if()
   };
 });

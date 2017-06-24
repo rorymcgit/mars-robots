@@ -24,7 +24,7 @@
     </form>
     The robot is at position: {{ ctrl.robotPosition }}</p>
 
-    <form name="robotInstructions">
+    <form name="robotInstructions" ng-submit="ctrl.moveRobot()">
       Robot Movement Instructions:
       <input type="text" ng-model="ctrl.robotInstructions" pattern="[L,R,F]{0,99}"/>
       <input type="submit" value="Submit">

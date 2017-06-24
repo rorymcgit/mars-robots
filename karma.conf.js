@@ -21,7 +21,8 @@ module.exports = function(config) {
       './js/app.js',
       './js/controllers/gridController.js',
       './spec/grid_spec.js',
-      'spec/robotPosition_spec.js'
+      'spec/robotPosition_spec.js',
+      'spec/robotInstructions_spec.js'
     ],
 
 

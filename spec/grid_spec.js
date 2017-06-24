@@ -10,17 +10,17 @@ describe("gridController", function() {
   });
 
   it("x coordinate is null as default", function() {
-    expect(gridController.gridCoords["x"]).toEqual(null);
+    expect(gridController.gridCoords.x).toEqual(null);
   });
 
   it("y coordinate is null as default", function() {
-    expect(gridController.gridCoords["y"]).toEqual(null);
+    expect(gridController.gridCoords.y).toEqual(null);
   });
 
   describe("defined grid", function() {
     beforeEach(function() {
-      gridController.gridCoords["x"] = "5";
-      gridController.gridCoords["y"] = "3";
+      gridController.gridCoords.x = "5";
+      gridController.gridCoords.y = "3";
     });
 
     it("creates a 2D grid array", function() {
