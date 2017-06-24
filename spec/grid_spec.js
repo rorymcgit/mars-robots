@@ -10,16 +10,16 @@ describe("gridController", function() {
   });
 
   it("x coordinates empty as default", function() {
-    expect(gridController.coords["x"]).toEqual("");
+    expect(gridController.gridCoords["x"]).toEqual("");
   });
 
   it("y coordinates empty as default", function() {
-    expect(gridController.coords["y"]).toEqual("");
+    expect(gridController.gridCoords["y"]).toEqual("");
   });
 
   it("creates a 2D grid array", function() {
-    gridController.coords['x'] = '5';
-    gridController.coords['y'] = '3';
+    gridController.gridCoords['x'] = '5';
+    gridController.gridCoords['y'] = '3';
 
     var expectedGridArray = [ ["00", "01", "02", "03"],
                               ["10", "11", "12", "13"],
@@ -29,5 +29,13 @@ describe("gridController", function() {
                               ["50", "51", "52", "53"]];
 
     expect(gridController.createGrid()).toEqual(expectedGridArray);
+  });
+
+  it("robot start x coordinates empty as default", function() {
+    expect(gridController.roboStartCoords["x"]).toEqual("");
+  });
+
+  it("robot start y coordinates empty as default", function() {
+    expect(gridController.roboStartCoords["y"]).toEqual("");
   });
 });

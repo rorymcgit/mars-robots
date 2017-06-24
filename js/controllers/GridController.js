@@ -1,16 +1,21 @@
 "use strict";
 
 app.controller("gridController", function() {
-  this.coords = {
+  this.gridCoords = {
     x: "",
     y: ""
   };
 
-  this.createGrid = function() {
-    console.log("Grid Size Coordinates:", this.coords);
+  this.roboStartCoords = {
+    x: "",
+    y: ""
+  }
 
-    var cols = parseInt(this.coords["x"]) + 1; // add 1 for zero
-    var rows = parseInt(this.coords["y"]) + 1; // add 1 for zero
+  this.createGrid = function() {
+    console.log("Grid Size Coordinates:", this.gridCoords);
+
+    var cols = parseInt(this.gridCoords["x"]) + 1; // add 1 for zero
+    var rows = parseInt(this.gridCoords["y"]) + 1; // add 1 for zero
 
     console.log("cols (x) =", cols);
     console.log("rows (y) =", rows);
@@ -21,12 +26,13 @@ app.controller("gridController", function() {
       grid[i] = [];
       for(var j = 0; j < rows; j++) {
         grid[i][j] = String(i) + String(j);
-        console.log(grid[i][j]);
       }
     }
     this.grid = grid;
     console.log(this.grid);
     console.log(this);
+
+    // console.log(grid[3][2]);
 
     return this.grid;
   };
