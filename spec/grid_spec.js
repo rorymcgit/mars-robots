@@ -9,11 +9,25 @@ describe("gridController", function() {
     });
   });
 
-  it("should show empty x coordinates", function() {
+  it("x coordinates empty as default", function() {
     expect(gridController.coords["x"]).toEqual("");
   });
 
-  it("should show empty y coordinates", function() {
+  it("y coordinates empty as default", function() {
     expect(gridController.coords["y"]).toEqual("");
+  });
+
+  it("creates a 2D grid array", function() {
+    gridController.coords['x'] = '5';
+    gridController.coords['y'] = '3';
+
+    var expectedGridArray = [ [0, 1, 2, 3],
+                              [0, 1, 2, 3],
+                              [0, 1, 2, 3],
+                              [0, 1, 2, 3],
+                              [0, 1, 2, 3],
+                              [0, 1, 2, 3]];
+
+    expect(gridController.createGrid()).toEqual(expectedGridArray);
   });
 });
