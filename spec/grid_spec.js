@@ -18,8 +18,8 @@ describe("gridController", function() {
   });
 
   it("creates a 2D grid array", function() {
-    gridController.gridCoords['x'] = '5';
-    gridController.gridCoords['y'] = '3';
+    gridController.gridCoords["x"] = "5";
+    gridController.gridCoords["y"] = "3";
 
     var expectedGridArray = [ ["00", "01", "02", "03"],
                               ["10", "11", "12", "13"],
@@ -37,5 +37,14 @@ describe("gridController", function() {
 
   it("robot start y coordinates empty as default", function() {
     expect(gridController.roboStartCoords["y"]).toEqual("");
+  });
+
+  it("logs a robot's start position", function() {
+    gridController.gridCoords["x"] = "5";
+    gridController.gridCoords["y"] = "3";
+    gridController.createGrid();
+    gridController.roboStartCoords["x"] = 3;
+    gridController.roboStartCoords["y"] = 2;
+    expect(gridController.placeRobot()).toEqual("32")
   });
 });

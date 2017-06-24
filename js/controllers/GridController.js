@@ -30,10 +30,12 @@ app.controller("gridController", function() {
     }
     this.grid = grid;
     console.log(this.grid);
-    console.log(this);
-
-    // console.log(grid[3][2]);
 
     return this.grid;
+  };
+
+  this.placeRobot = function() {
+    this.robotPosition = this.grid[this.roboStartCoords["x"]][this.roboStartCoords["y"]];
+    return this.robotPosition;
   };
 });

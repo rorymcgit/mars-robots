@@ -9,18 +9,19 @@
   <div ng-controller="gridController as ctrl">
     <p>
     <form name="gridSize" ng-submit="ctrl.createGrid()">
-       X coord: <input type="number" min="0" max="49" ng-model="ctrl.coords.x"/>
-       Y coord: <input type="number" min="0" max="49" ng-model="ctrl.coords.y"/>
+       X coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.x"/>
+       Y coord: <input type="number" min="0" max="49" ng-model="ctrl.gridCoords.y"/>
        <input type="submit" value="Submit">
     </form>
-    The grid size is: {{ ctrl.coords.x }} x {{ ctrl.coords.y }}</p>
+    The grid size is: {{ ctrl.gridCoords.x }} x {{ ctrl.gridCoords.y }}</p>
 
-    <form name="robotStartPosition">
+    <form name="robotStartPosition" ng-submit="ctrl.placeRobot()">
       Robot Start Position:</br>
-      X coord: <input type="number" min="0" max="49" ng-model="ctrl.robotStart.x"/>
-      Y coord: <input type="number" min="0" max="49" ng-model="ctrl.robotStart.y"/>
+      X coord: <input type="number" min="0" max="49" ng-model="ctrl.roboStartCoords.x"/>
+      Y coord: <input type="number" min="0" max="49" ng-model="ctrl.roboStartCoords.y"/>
       <input type="submit" value="Submit">
     </form>
+    The robot is at position: {{ ctrl.robotPosition }}
 
   </div>
 
