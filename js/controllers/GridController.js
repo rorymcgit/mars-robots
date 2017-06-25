@@ -45,18 +45,28 @@ app.controller("gridController", function() {
     var allInstructions = this.robotInstructions.split("");
     var ctlr = this;
 
-    allInstructions.forEach(function(move) {
-      if (move === "F") {
+    for(var i = 0; i < allInstructions.length; i++) {
+      if (allInstructions[i] === "F") {
         if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y += 1 : ctlr.robotCoords.lost = true;
+          if (ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x]) {
+            ctlr.robotCoords.y += 1;
+          } else {
+            ctlr.robotCoords.lost = true;
+            break;
+          }
         } else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y -= 1 : ctlr.robotCoords.lost = true;
+          if (ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x]) {
+            ctlr.robotCoords.y -= 1;
+          } else {
+            ctlr.robotCoords.lost = true;
+            break;
+          }
         } else if (ctlr.robotCoords.orientation === "E") {
           ctlr.robotCoords.x + 1 in ctlr.grid ? ctlr.robotCoords.x += 1 : ctlr.robotCoords.lost = true;
         } else if (ctlr.robotCoords.orientation === "W") {
           ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.robotCoords.lost = true;
         }
-      } else if (move === "L") {
+      } else if (allInstructions[i] === "L") {
         if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.orientation = "W";
         } else if (ctlr.robotCoords.orientation === "S") {
@@ -66,7 +76,7 @@ app.controller("gridController", function() {
         } else if (ctlr.robotCoords.orientation === "W") {
           ctlr.robotCoords.orientation = "S";
         }
-      } else if (move === "R") {
+      } else if (allInstructions[i] === "R") {
         if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.orientation = "E";
         } else if (ctlr.robotCoords.orientation === "S") {
@@ -77,7 +87,7 @@ app.controller("gridController", function() {
           ctlr.robotCoords.orientation = "N";
         }
       }
-    });
+    };
     console.log(this);
     return this.stringifyRobotPosition();
   };

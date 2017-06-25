@@ -51,7 +51,7 @@ describe("Robot instructions", function() {
     expect(gridController.moveRobot()).toEqual("02WLOST");
   });
 
-  xit("doesn't follow futher instructions after being lost", function() {
+  it("doesn't follow futher instructions after being lost", function() {
     gridController.robotInstructions = "FFR";
     expect(gridController.moveRobot()).toEqual("33NLOST");
   });
