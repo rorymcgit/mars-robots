@@ -1,18 +1,19 @@
 "use strict";
 
 app.controller("gridController", function() {
-  this.robotInstructions = "";
 
   this.gridCoords = {
     x: null,
     y: null
   };
 
+  this.robotInstructions = "";
+
   this.robotCoords = {
     x: null,
     y: null,
     orientation: null,
-    lost: null
+    lost: false
   }
 
   this.createGrid = function() {
@@ -100,8 +101,8 @@ app.controller("gridController", function() {
     this.robotCoords.x = null;
     this.robotCoords.y = null;
     this.robotCoords.orientation = null;
+    this.robotCoords.lost = false;
     this.robotPosition = "";
     this.robotInstructions = "";
-    this.robotCoords.lost = null;
   };
 });
