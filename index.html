@@ -19,13 +19,13 @@
       Robot Start Position:</br>
       X coord: <input type="number" ng-model="ctrl.robotCoords.x" min="0" max="50"/>
       Y coord: <input type="number" ng-model="ctrl.robotCoords.y" min="0" max="50"/>
-      Orientation: (N/S/E/W): <input type="text" ng-model="ctrl.robotCoords.orientation" pattern="[N,S,E,W]{1}"/>
+      Orientation (N/S/E/W): <input type="text" ng-model="ctrl.robotCoords.orientation" pattern="[N,S,E,W]{1}"/>
       <input type="submit" value="Submit">
     </form>
     The robot is at position: {{ ctrl.robotPosition }}</p>
 
     <form name="robotInstructions" ng-submit="ctrl.moveRobot()">
-      Robot Movement Instructions:
+      Robot Movement Instructions (L/R/F):
       <input type="text" ng-model="ctrl.robotInstructions" pattern="[L,R,F]{0,99}"/>
       <input type="submit" value="Submit">
     </form>

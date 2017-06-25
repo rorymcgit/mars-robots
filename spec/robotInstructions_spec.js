@@ -29,4 +29,24 @@ describe("Robot instructions", function() {
     expect(gridController.moveRobot()).toEqual("22S");
   });
 
+  it("returns the position a robot was lost at when out of bounds moving north", function() {
+    gridController.robotInstructions = "FF";
+    expect(gridController.moveRobot()).toEqual("33NLOST");
+  });
+
+  it("returns the position a robot was lost at when out of bounds moving south", function() {
+    gridController.robotInstructions = "LLFFF";
+    expect(gridController.moveRobot()).toEqual("30SLOST");
+  });
+
+  it("returns the position a robot was lost at when out of bounds moving east", function() {
+    gridController.robotInstructions = "RFFF";
+    expect(gridController.moveRobot()).toEqual("52ELOST");
+  });
+
+  it("returns the position a robot was lost at when out of bounds moving west", function() {
+    gridController.robotInstructions = "LFFFF";
+    expect(gridController.moveRobot()).toEqual("02WLOST");
+  });
+
 });

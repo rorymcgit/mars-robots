@@ -1,6 +1,8 @@
 "use strict";
 
 app.controller("gridController", function() {
+  this.robotInstructions = "";
+
   this.gridCoords = {
     x: null,
     y: null
@@ -12,13 +14,11 @@ app.controller("gridController", function() {
     orientation: null
   }
 
-  this.robotInstructions = "";
-
   this.createGrid = function() {
     console.log("Grid Size Coordinates:", this.gridCoords);
 
-    var cols = parseInt(this.gridCoords.x) + 1; // add 1 for zero
-    var rows = parseInt(this.gridCoords.y) + 1; // add 1 for zero
+    var cols = parseInt(this.gridCoords.x) + 1; // add 1 for zero column
+    var rows = parseInt(this.gridCoords.y) + 1; // add 1 for zero row
 
     console.log("cols (x) =", cols);
     console.log("rows (y) =", rows);
@@ -38,32 +38,30 @@ app.controller("gridController", function() {
   };
 
   this.stringifyRobotPosition = function() {
-    console.log(this);
     this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
-    return this.robotPosition;
+    return this.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
   };
 
   this.moveRobot = function() {
-    console.log(this.robotInstructions);
     var allInstructions = this.robotInstructions.split("");
     var ctlr = this;
-    console.log(allInstructions);
-    allInstructions.forEach(function(instruct) {
-      if (instruct === "F") {
+
+    allInstructions.forEach(function(move) {
+      if (move === "F") {
         if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.y += 1;
+          ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y += 1 : ctlr.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.y -= 1;
+          ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y -= 1 : ctlr.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.x += 1;
+          ctlr.robotCoords.x + 1 in ctlr.grid ? ctlr.robotCoords.x += 1 : ctlr.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.x -= 1;
+          ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.lost = true;
         }
       }
-      else if (instruct === "R") {
+      else if (move === "R") {
         if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.orientation = "E";
         }
@@ -77,7 +75,7 @@ app.controller("gridController", function() {
           ctlr.robotCoords.orientation = "N";
         }
       }
-      else if (instruct === "L") {
+      else if (move === "L") {
         if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.orientation = "W";
         }
