@@ -37,11 +37,6 @@ app.controller("gridController", function() {
     return this.grid;
   };
 
-  this.stringifyRobotPosition = function() {
-    this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
-    return this.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
-  };
-
   this.moveRobot = function() {
     var allInstructions = this.robotInstructions.split("");
     var ctlr = this;
@@ -90,6 +85,22 @@ app.controller("gridController", function() {
         }
       }
     });
+    console.log(this)
+    console.log(this.stringifyRobotPosition());
     return(this.stringifyRobotPosition());
+  };
+
+  this.stringifyRobotPosition = function() {
+    this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
+    return this.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
+  };
+
+  this.clearRobot = function() {
+    this.robotCoords.x = null;
+    this.robotCoords.y = null;
+    this.robotCoords.orientation = null;
+    this.robotPosition = "";
+    this.robotInstructions = "";
+    this.lost = null;
   };
 });

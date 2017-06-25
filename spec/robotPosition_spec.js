@@ -34,5 +34,15 @@ describe("Robot position", function() {
     it("logs a robot's start position", function() {
       expect(gridController.stringifyRobotPosition()).toEqual("32N");
     });
+
+    it("clears all current robot's properties", function() {
+      gridController.clearRobot()
+      expect(gridController.robotCoords.x).toEqual(null);
+      expect(gridController.robotCoords.y).toEqual(null);
+      expect(gridController.robotCoords.orientation).toEqual(null);
+      expect(gridController.robotPosition).toEqual("");
+      expect(gridController.robotInstructions).toEqual("");
+      expect(gridController.lost).toEqual(null);
+    });
   });
 });

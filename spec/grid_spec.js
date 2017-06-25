@@ -1,4 +1,4 @@
-describe("gridController", function() {
+describe("grid", function() {
   var gridController;
 
   beforeEach(function(){
