@@ -24,11 +24,13 @@ describe("Robot instructions", function() {
   it("provides a single move instruction and receives the robot's final position", function() {
     gridController.robotInstructions = "F";
     expect(gridController.moveRobot()).toEqual("33N");
+    expect(gridController.robotPosition).toEqual("33N");
   });
 
   it("provides complex move instructions and receives the robot's final position", function() {
     gridController.robotInstructions = "RFFRFRFFLFRRFFLFL";
     expect(gridController.moveRobot()).toEqual("22S");
+    expect(gridController.robotPosition).toEqual("22S");
   });
 
   it("returns the position a robot was lost at moving north", function() {
