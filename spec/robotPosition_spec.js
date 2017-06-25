@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Robot position", function() {
   var gridController;
 

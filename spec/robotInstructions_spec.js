@@ -1,3 +1,5 @@
+"use strict";
+
 describe("Robot instructions", function() {
   var gridController;
 
