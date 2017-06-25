@@ -31,24 +31,43 @@ describe("Robot instructions", function() {
     expect(gridController.moveRobot()).toEqual("22S");
   });
 
-  it("returns the position a robot was lost at when out of bounds moving north", function() {
+  it("returns the position a robot was lost at moving north off grid", function() {
     gridController.robotInstructions = "FF";
     expect(gridController.moveRobot()).toEqual("33NLOST");
   });
 
-  it("returns the position a robot was lost at when out of bounds moving south", function() {
+  it("returns the position a robot was lost at moving south off grid", function() {
     gridController.robotInstructions = "LLFFF";
     expect(gridController.moveRobot()).toEqual("30SLOST");
   });
 
-  it("returns the position a robot was lost at when out of bounds moving east", function() {
+  it("returns the position a robot was lost at moving east off grid", function() {
     gridController.robotInstructions = "RFFF";
     expect(gridController.moveRobot()).toEqual("52ELOST");
   });
 
-  it("returns the position a robot was lost at when out of bounds moving west", function() {
+  it("returns the position a robot was lost at moving west off grid", function() {
     gridController.robotInstructions = "LFFFF";
     expect(gridController.moveRobot()).toEqual("02WLOST");
   });
+
+  xit("doesn't follow futher instructions after being lost", function() {
+    gridController.robotInstructions = "FFR";
+    expect(gridController.moveRobot()).toEqual("33NLOST");
+  });
+
+  // xit("robot ignores command to move off the grid, when a robot has previously moved off from the same point", function() {
+  //   gridController.robotInstructions = "FF";
+  //   gridController.moveRobot();
+  //   gridController.clearRobot();
+  //   gridController.robotCoords.x = 3;
+  //   gridController.robotCoords.y = 3;
+  //   gridController.robotCoords.orientation = "N";
+  //   console.log(gridController.robotCoords);
+  //   gridController.robotInstructions = "FLF";
+  //   gridController.moveRobot();
+  //   console.log('controller', gridController);
+  //   expect(gridController.robotPosition).toEqual("23W");
+  // });
 
 });
