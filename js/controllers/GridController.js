@@ -73,7 +73,7 @@ app.controller("gridController", function() {
             ctlr.robotCoords.x -= 1;
           } else {
             ctlr.robotCoords.lost = true;
-            break;  
+            break;
           }
         }
       } else if (allInstructions[i] === "L") {
