@@ -11,7 +11,8 @@ app.controller("gridController", function() {
   this.robotCoords = {
     x: null,
     y: null,
-    orientation: null
+    orientation: null,
+    lost: null
   }
 
   this.createGrid = function() {
@@ -44,16 +45,16 @@ app.controller("gridController", function() {
     allInstructions.forEach(function(move) {
       if (move === "F") {
         if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y += 1 : ctlr.lost = true;
+          ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y += 1 : ctlr.robotCoords.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y -= 1 : ctlr.lost = true;
+          ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x] ? ctlr.robotCoords.y -= 1 : ctlr.robotCoords.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.x + 1 in ctlr.grid ? ctlr.robotCoords.x += 1 : ctlr.lost = true;
+          ctlr.robotCoords.x + 1 in ctlr.grid ? ctlr.robotCoords.x += 1 : ctlr.robotCoords.lost = true;
         }
         else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.lost = true;
+          ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.robotCoords.lost = true;
         }
       }
       else if (move === "R") {
@@ -92,7 +93,7 @@ app.controller("gridController", function() {
 
   this.stringifyRobotPosition = function() {
     this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
-    return this.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
+    return this.robotCoords.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
   };
 
   this.clearRobot = function() {
@@ -101,6 +102,6 @@ app.controller("gridController", function() {
     this.robotCoords.orientation = null;
     this.robotPosition = "";
     this.robotInstructions = "";
-    this.lost = null;
+    this.robotCoords.lost = null;
   };
 });

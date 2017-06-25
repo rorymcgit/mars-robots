@@ -40,9 +40,9 @@ describe("Robot position", function() {
       expect(gridController.robotCoords.x).toEqual(null);
       expect(gridController.robotCoords.y).toEqual(null);
       expect(gridController.robotCoords.orientation).toEqual(null);
+      expect(gridController.robotCoords.lost).toEqual(null);
       expect(gridController.robotPosition).toEqual("");
       expect(gridController.robotInstructions).toEqual("");
-      expect(gridController.lost).toEqual(null);
     });
   });
 });
