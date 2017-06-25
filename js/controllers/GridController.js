@@ -62,9 +62,19 @@ app.controller("gridController", function() {
             break;
           }
         } else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.x + 1 in ctlr.grid ? ctlr.robotCoords.x += 1 : ctlr.robotCoords.lost = true;
+          if (ctlr.robotCoords.x + 1 in ctlr.grid) {
+            ctlr.robotCoords.x += 1;
+          } else {
+            ctlr.robotCoords.lost = true;
+            break;
+          }
         } else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.robotCoords.lost = true;
+          if (ctlr.robotCoords.x - 1 in ctlr.grid) {
+            ctlr.robotCoords.x -= 1;
+          } else {
+            ctlr.robotCoords.lost = true;
+            break;  
+          }
         }
       } else if (allInstructions[i] === "L") {
         if (ctlr.robotCoords.orientation === "N") {
