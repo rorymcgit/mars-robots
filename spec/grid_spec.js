@@ -17,6 +17,10 @@ describe("grid", function() {
     expect(gridController.gridCoords.y).toEqual(null);
   });
 
+  fit("has empty lost robots array as default", function() {
+    expect(gridController.lostRobots).toEqual([]);
+  });
+
   describe("defined grid", function() {
     beforeEach(function() {
       gridController.gridCoords.x = "5";

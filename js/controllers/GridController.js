@@ -2,6 +2,8 @@
 
 app.controller("gridController", function() {
 
+  this.lostRobots = [];
+
   this.gridCoords = {
     x: null,
     y: null

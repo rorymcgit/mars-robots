@@ -18,7 +18,11 @@ describe("Robot position", function() {
   });
 
   it("orientation is null as default", function() {
-    expect(gridController.robotCoords["orientation"]).toEqual(null);
+    expect(gridController.robotCoords.orientation).toEqual(null);
+  });
+
+  it("lost is false as default", function() {
+    expect(gridController.robotCoords.lost).toEqual(false);
   });
 
   describe("defined grid with a robot position + orientation", function() {
