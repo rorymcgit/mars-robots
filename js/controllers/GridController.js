@@ -60,20 +60,6 @@ app.controller("gridController", function() {
           ctlr.robotCoords.x - 1 in ctlr.grid ? ctlr.robotCoords.x -= 1 : ctlr.robotCoords.lost = true;
         }
       }
-      else if (move === "R") {
-        if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.orientation = "E";
-        }
-        else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.orientation = "W";
-        }
-        else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.orientation = "S";
-        }
-        else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.orientation = "N";
-        }
-      }
       else if (move === "L") {
         if (ctlr.robotCoords.orientation === "N") {
           ctlr.robotCoords.orientation = "W";
@@ -86,6 +72,20 @@ app.controller("gridController", function() {
         }
         else if (ctlr.robotCoords.orientation === "W") {
           ctlr.robotCoords.orientation = "S";
+        }
+      }
+      else if (move === "R") {
+        if (ctlr.robotCoords.orientation === "N") {
+          ctlr.robotCoords.orientation = "E";
+        }
+        else if (ctlr.robotCoords.orientation === "S") {
+          ctlr.robotCoords.orientation = "W";
+        }
+        else if (ctlr.robotCoords.orientation === "E") {
+          ctlr.robotCoords.orientation = "S";
+        }
+        else if (ctlr.robotCoords.orientation === "W") {
+          ctlr.robotCoords.orientation = "N";
         }
       }
     });

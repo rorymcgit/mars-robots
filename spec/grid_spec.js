@@ -19,7 +19,7 @@ describe("grid", function() {
     expect(gridController.gridCoords.y).toEqual(null);
   });
 
-  fit("has empty lost robots array as default", function() {
+  it("has empty lost robots array as default", function() {
     expect(gridController.lostRobots).toEqual([]);
   });
 
