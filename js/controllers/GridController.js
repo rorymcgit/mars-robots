@@ -19,14 +19,8 @@ app.controller("gridController", function() {
   }
 
   this.createGrid = function() {
-    console.log("Grid Size Coordinates:", this.gridCoords);
-
     var cols = parseInt(this.gridCoords.x) + 1; // add 1 for zero column
     var rows = parseInt(this.gridCoords.y) + 1; // add 1 for zero row
-
-    console.log("cols (x) =", cols);
-    console.log("rows (y) =", rows);
-
     var grid = new Array(cols);
 
     for(var i = 0; i < cols; i++) {
@@ -36,96 +30,25 @@ app.controller("gridController", function() {
       }
     }
     this.grid = grid;
-    console.log(this.grid);
-
     return this.grid;
   };
 
-  this.moveRobot = function() {
-    var allInstructions = this.robotInstructions.split("");
-    var ctlr = this;
-
-    for (var i = 0; i < allInstructions.length; i++) {
-      if (allInstructions[i] === "F") {
-        if (ctlr.robotCoords.orientation === "N") {
-          // if cell is on the grid, move north one space
-          if (ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x]) {
-            ctlr.robotCoords.y += 1;
-          } else if (ctlr.lostRobotAtThisMove()) {
-            ctlr.IgnoreMoveDueToLostRobotScent();
-          } else {
-            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
-            ctlr.robotCoords.lost = true;
-            break;
-          }
-        } else if (ctlr.robotCoords.orientation === "S") {
-          if (ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x]) {
-            ctlr.robotCoords.y -= 1;
-          } else if (ctlr.lostRobotAtThisMove()) {
-            ctlr.IgnoreMoveDueToLostRobotScent();
-          } else {
-            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
-            ctlr.robotCoords.lost = true;
-            break;
-          }
-        } else if (ctlr.robotCoords.orientation === "E") {
-          if (ctlr.robotCoords.x + 1 in ctlr.grid) {
-            ctlr.robotCoords.x += 1;
-          } else if (ctlr.lostRobotAtThisMove()) {
-            ctlr.IgnoreMoveDueToLostRobotScent();
-          } else {
-            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
-            ctlr.robotCoords.lost = true;
-            break;
-          }
-        } else if (ctlr.robotCoords.orientation === "W") {
-          if (ctlr.robotCoords.x - 1 in ctlr.grid) {
-            ctlr.robotCoords.x -= 1;
-          } else if (ctlr.lostRobotAtThisMove()) {
-            ctlr.IgnoreMoveDueToLostRobotScent();
-          } else {
-            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
-            ctlr.robotCoords.lost = true;
-            break;
-          }
-        }
-      } else if (allInstructions[i] === "L") {
-        if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.orientation = "W";
-        } else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.orientation = "E";
-        } else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.orientation = "N";
-        } else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.orientation = "S";
-        }
-      } else if (allInstructions[i] === "R") {
-        if (ctlr.robotCoords.orientation === "N") {
-          ctlr.robotCoords.orientation = "E";
-        } else if (ctlr.robotCoords.orientation === "S") {
-          ctlr.robotCoords.orientation = "W";
-        } else if (ctlr.robotCoords.orientation === "E") {
-          ctlr.robotCoords.orientation = "S";
-        } else if (ctlr.robotCoords.orientation === "W") {
-          ctlr.robotCoords.orientation = "N";
-        }
-      }
-    };
-    console.log(this);
-    return this.stringifyRobotPosition();
-  };
-
-  this.stringifyRobotPosition = function() {
+  this.returnRobotPosition = function() {
     this.robotPosition = this.grid[this.robotCoords.x][this.robotCoords.y] + this.robotCoords.orientation;
     return this.robotCoords.lost === true ? this.robotPosition += "LOST" : this.robotPosition;
   };
 
-  this.IgnoreMoveDueToLostRobotScent = function() {
-    console.log('Robot ignored instruction to move off grid at ' + this.stringifyRobotPosition());
+  this.lostRobot = function() {
+    this.lostRobots.push(this.returnRobotPosition());
+    this.robotCoords.lost = true;
   }
 
   this.lostRobotAtThisMove = function() {
-    return this.lostRobots.includes(this.stringifyRobotPosition());
+    return this.lostRobots.includes(this.returnRobotPosition());
+  }
+
+  this.IgnoreMoveDueToLostRobotScent = function() {
+    console.log('Robot ignored instruction to move off grid at ' + this.returnRobotPosition());
   }
 
   this.clearRobot = function() {
@@ -135,5 +58,73 @@ app.controller("gridController", function() {
     this.robotCoords.lost = false;
     this.robotPosition = "";
     this.robotInstructions = "";
+  };
+
+  this.moveRobot = function() {
+    var allInstructions = this.robotInstructions.split("");
+
+    for (var i = 0; i < allInstructions.length; i++) {
+      if (allInstructions[i] === "F") {
+        if (this.robotCoords.orientation === "N") {
+          // if cell is on the grid, move north one space
+          if (this.robotCoords.y + 1 in this.grid[this.robotCoords.x]) {
+            this.robotCoords.y += 1;
+          } else if (this.lostRobotAtThisMove()) {
+            this.IgnoreMoveDueToLostRobotScent();
+          } else {
+            this.lostRobot();
+            break;
+          }
+        } else if (this.robotCoords.orientation === "S") {
+          if (this.robotCoords.y - 1 in this.grid[this.robotCoords.x]) {
+            this.robotCoords.y -= 1;
+          } else if (this.lostRobotAtThisMove()) {
+            this.IgnoreMoveDueToLostRobotScent();
+          } else {
+            this.lostRobot();
+            break;
+          }
+        } else if (this.robotCoords.orientation === "E") {
+          if (this.robotCoords.x + 1 in this.grid) {
+            this.robotCoords.x += 1;
+          } else if (this.lostRobotAtThisMove()) {
+            this.IgnoreMoveDueToLostRobotScent();
+          } else {
+            this.lostRobot();
+            break;
+          }
+        } else if (this.robotCoords.orientation === "W") {
+          if (this.robotCoords.x - 1 in this.grid) {
+            this.robotCoords.x -= 1;
+          } else if (this.lostRobotAtThisMove()) {
+            this.IgnoreMoveDueToLostRobotScent();
+          } else {
+            this.lostRobot();
+            break;
+          }
+        }
+      } else if (allInstructions[i] === "L") {
+        if (this.robotCoords.orientation === "N") {
+          this.robotCoords.orientation = "W";
+        } else if (this.robotCoords.orientation === "S") {
+          this.robotCoords.orientation = "E";
+        } else if (this.robotCoords.orientation === "E") {
+          this.robotCoords.orientation = "N";
+        } else if (this.robotCoords.orientation === "W") {
+          this.robotCoords.orientation = "S";
+        }
+      } else if (allInstructions[i] === "R") {
+        if (this.robotCoords.orientation === "N") {
+          this.robotCoords.orientation = "E";
+        } else if (this.robotCoords.orientation === "S") {
+          this.robotCoords.orientation = "W";
+        } else if (this.robotCoords.orientation === "E") {
+          this.robotCoords.orientation = "S";
+        } else if (this.robotCoords.orientation === "W") {
+          this.robotCoords.orientation = "N";
+        }
+      }
+    };
+    return this.returnRobotPosition();
   };
 });

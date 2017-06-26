@@ -38,7 +38,7 @@ describe("Robot position", function() {
     });
 
     it("logs a robot's start position", function() {
-      expect(gridController.stringifyRobotPosition()).toEqual("32N");
+      expect(gridController.returnRobotPosition()).toEqual("32N");
     });
 
     it("clears all current robot's properties", function() {
