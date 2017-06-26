@@ -40,19 +40,21 @@ I am happy with the createGrid function which I rewrote several times at the beg
 
 I split up a lot of repetition in the moveRobot function to separate functions. This makes the whole function relatively readable and these functions are reusable in case additional movements (e.g. backwards) are to be added.  
 
+Testing! Used TDD throughout, and every move from every orientation is thoroughly tested.
+
 Fully implemented all requested features (lost robot reporting, lost robot scent, all movements).  
 
 
 ### Struggles
 The visualisation of the grid was tough throughout, I drew up a grid on a piece of paper and stepped through it whenever I needed to visualise a movement. This was imperative to the success of the project.  
 
-I am not a big fan of the fact that everything lives within my gridController. Although all of the functions within the controller pertain to the grid, I feel I could have tackled this project differently, perhaps by instantiating new Robot objects and passing these into the grid each time. This would change the UI from the user clearing a robot when placing another, to adding a new robot each time, with the other robot details remaining untouched.  
-  
-I did not want to mix/inject controllers in AngularJS. This falls down to the fact that AngularJS was new to me at the beginning of the project. After this project I now intend to spend more time reading up on it, building projects in it and learning its nuances.
+I am not a big fan of the fact that everything lives within my gridController. This falls down to the fact that AngularJS was new to me at the beginning of the project. Although all of the functions within the controller pertain to the grid, I feel I could have tackled this project differently, perhaps by instantiating new Robot objects and passing these into the grid each time. This would change the UI from the user clearing a robot when placing another, to adding a new robot each time, with the other robot details remaining untouched.  
+
+After doing some research I concluded that I should not mix/inject controllers in AngularJS. After this project I now intend to spend more time reading up on it, building projects in it and learning its nuances.
 
 Overall I had a lot of fun building this and learned a lot.  
 
-Future features to add could be:
+## Potential Future Features:
 - Visual grid, updating robot positions onto the grid
 - Backwards or diagonal moves
 - Some CSS!
