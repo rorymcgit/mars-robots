@@ -45,34 +45,48 @@ app.controller("gridController", function() {
     var allInstructions = this.robotInstructions.split("");
     var ctlr = this;
 
-    for(var i = 0; i < allInstructions.length; i++) {
+    for (var i = 0; i < allInstructions.length; i++) {
       if (allInstructions[i] === "F") {
         if (ctlr.robotCoords.orientation === "N") {
+          // if cell is on the grid, move north one space
           if (ctlr.robotCoords.y + 1 in ctlr.grid[ctlr.robotCoords.x]) {
             ctlr.robotCoords.y += 1;
-          } else {
+          } else if (ctlr.lostRobots.includes(ctlr.stringifyRobotPosition() + "LOST")) {
+            console.log('Robot ignored instruction to move off grid at ' + ctlr.stringifyRobotPosition());
+          } else { // this robot has been lost
             ctlr.robotCoords.lost = true;
+            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
             break;
           }
         } else if (ctlr.robotCoords.orientation === "S") {
+        // if cell is on the grid, move south one space
           if (ctlr.robotCoords.y - 1 in ctlr.grid[ctlr.robotCoords.x]) {
             ctlr.robotCoords.y -= 1;
-          } else {
+          } else if (ctlr.lostRobots.includes(ctlr.stringifyRobotPosition() + "LOST")) {
+            console.log('Robot ignored instruction to move off grid at ' + ctlr.stringifyRobotPosition());
+          } else { // this robot has been lost
             ctlr.robotCoords.lost = true;
+            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
             break;
           }
         } else if (ctlr.robotCoords.orientation === "E") {
           if (ctlr.robotCoords.x + 1 in ctlr.grid) {
             ctlr.robotCoords.x += 1;
+          } else if (ctlr.lostRobots.includes(ctlr.stringifyRobotPosition() + "LOST")) {
+            console.log('Robot ignored instruction to move off grid at ' + ctlr.stringifyRobotPosition());
           } else {
             ctlr.robotCoords.lost = true;
+            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
             break;
           }
         } else if (ctlr.robotCoords.orientation === "W") {
           if (ctlr.robotCoords.x - 1 in ctlr.grid) {
             ctlr.robotCoords.x -= 1;
+          } else if (ctlr.lostRobots.includes(ctlr.stringifyRobotPosition() + "LOST")) {
+            console.log('Robot ignored instruction to move off grid at ' + ctlr.stringifyRobotPosition());
           } else {
             ctlr.robotCoords.lost = true;
+            ctlr.lostRobots.push(ctlr.stringifyRobotPosition());
             break;
           }
         }
