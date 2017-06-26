@@ -16,14 +16,41 @@ In the case where a robot receives instructions to move off the allocated grid s
 
 - Open `./index.html` in your favourite browser
 - Input your desired grid size, in columns and rows (1 extra will be added for the zero-th column/row), and hit `Create Grid`
-- Input your first robot's position (x, y), orientation (N/S/E/W) and hit `Place Robot`
-- Enter a series of instructions, separated by whitespace e.g. "LRRFFFRFL"
-  L => pivot left
-  R => pivot right
-  F => move forward one cell
+- Input your first robot's position (x, y) and orientation (N/S/E/W). Hit `Place Robot`
+- Enter a series of instructions, separated by whitespace e.g. "LRRFFFRFL"  
+  L => pivot left  
+  R => pivot right  
+  F => move forward one cell  
 - Hit `Move Robot` and the robot's position will update.
 - `CLEAR CURRENT ROBOT` to place and move your next robot
 
 If a robot ignores an instruction due to a previous robot moving off the grid at the same place, a message will be printed to the console alerting the user of this (see image below).
 
-[]
+![](https://github.com/rorymcgit/mars-robots/blob/master/mars-robots-demo.png)
+
+## Technologies Used
+
+- Javascript
+- AngularJS
+- Jasmine
+- Karma
+
+### Successes
+I am happy with the createGrid function which I rewrote several times at the beginning of the project. I originally intended to create a visual grid with AngularJS. However, after reading the spec a number of times I concluded this was not necessary and as Angular was brand new to me it might have overcomplicated things.  
+
+I split up a lot of repetition in the moveRobot function to separate functions. This makes the whole function relatively readable and these functions are reusable in case additional movements (e.g. backwards) are to be added.  
+
+Fully implemented all requested features (lost robot reporting, lost robot scent, all movements).  
+
+
+### Struggles
+The visualisation of the grid was tough throughout, I drew up a grid on a piece of paper and stepped through it whenever I needed to visualise a movement. This was imperative to the success of the project.  
+I am not a big fan of the fact that everything lives within my gridController. Although all of the functions within the controller pertain to the grid, I feel I could have tackled this project differently, perhaps by instantiating new Robot objects and passing these into the grid each time. This would change the UI from the user clearing a robot when placing another, to adding a new robot each time, with the other robot details remaining untouched.  
+I did not want to mix/inject controllers in AngularJS. This falls down to the fact that AngularJS was new to me at the beginning of the project. After this project I now intend to spend more time reading up on it, building projects in it and learning its nuances.
+
+Overall I had a lot of fun building this and learned a lot.  
+
+Future features to add could be:
+- Visual grid, updating robot positions onto the grid
+- Backwards or diagonal moves
+- Some CSS!
