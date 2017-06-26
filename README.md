@@ -54,7 +54,7 @@ After doing some research I concluded that I should not mix/inject controllers i
 
 Overall I had a lot of fun building this and learned a lot.  
 
-## Potential Future Features:
+#### Potential Future Features:
 - Visual grid, updating robot positions onto the grid
 - Backwards or diagonal moves
 - Some CSS!
